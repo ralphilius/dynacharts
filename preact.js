@@ -1,16 +1,11 @@
 import { Component, h, render } from "https://cdn.skypack.dev/preact";
+import htm from 'https://cdn.skypack.dev/htm';
 import { useState } from 'https://cdn.skypack.dev/preact/hooks';
+const html = htm.bind(h);
 
-function MyComponent(props) {
+function App(props) {
   const [message, setMessage] = useState("Hello!");
-  return h(
-    "div",
-    { id: "app" },
-    h(Header, { message: message })
-  );
+  return html`<h1>Hello ${message}!</h1>`;
 }
 
-// Usage
-const App = <MyComponent name="John Doe" />;
-
-render(h(App), document.body);
+render(html`<${App} />`, document.body);
